@@ -32,7 +32,14 @@ Route::group(['prefix'=>'admin','as'=>'admin.'], function(){
 
     // categories routes
     Route::get('/categories',[CategoriesController::class,'index'])->name('admin.category.index');
-    Route::get('/create-category',[CategoriesController::class,'create'])->name('admin.category.create');
+    Route::get('/add-category',[CategoriesController::class,'create'])->name('admin.category.create');
+    Route::post('/add-category',[CategoriesController::class,'store'])->name('admin.category.store');
+    Route::get('/edit-category/{id}',[CategoriesController::class,'edit'])->name('admin.category.edit');
+    Route::post('/edit-category/{id}',[CategoriesController::class,'update'])->name('admin.category.update');
+    Route::get('/delete-category/{id}',[CategoriesController::class,'destroy'])->name('admin.category.destroy');
+    Route::get('/change-category-status/{id}',[CategoriesController::class,'changeStatus'])->name('admin.category.change.status');
+
+
     Route::post('send-message',[AdminController::class,'sendMessage'])->name('send.message');
 
 });
